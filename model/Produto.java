@@ -34,7 +34,7 @@ public abstract class Produto implements Serializable{
         public abstract String getDescricao();
 
         public void adicionarQuantidade(int quantidade){
-            if(this.quantidade > O){
+            if(this.quantidade > 0){
                 return;
             }
             this.quantidade+=quantidade;
