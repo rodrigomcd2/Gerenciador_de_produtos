@@ -1,14 +1,18 @@
 package model;
 
-public class microcontrolador extends Produto{
-  public class Microcontrolador(String nome, int quantidade, double preco) {
-    super(nome, quantidade, preco);
-  } 
-  public String getTipo(){
-  return "Microcontrolador";
-  }
+public class Microcontrolador extends Produto {
 
-  public String getDescricaoTecnica(){
-  return " Unidade de controle programavel para sistemas embarcados.";
-  }
+    public Microcontrolador(String nome, int quantidade, double preco) {
+        super(nome, quantidade,preco);
+    }
+
+    @Override
+    public String getTipo() {
+        return "Microcontrolador";
+    }
+
+    @Override
+    public String getDescricaoTecnica() {
+        return "Unidade de controle programável para sistemas embarcados.";
+    }
 }
