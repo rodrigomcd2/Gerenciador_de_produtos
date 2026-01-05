@@ -16,7 +16,7 @@ public class Vendedor implements Serializable {
     private List<Produto> produtos;
     private List<String> historico;
 
-    public Vendedor(String nome, String login, String senha) {
+    public Vendedor(String nome, String login) {
         this.nome = nome;
         this.login = login;
         this.produtos = new ArrayList<>();
