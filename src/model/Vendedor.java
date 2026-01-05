@@ -1,20 +1,17 @@
 package model;
-
-// usa essa classe em outro package 
+// usa classe de outro package
 import repository.VendedorRepository;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+// transforma os dados para serem salvos depois
+public class Vendedor implements Serializable { 
+    private static final long serialVersionUID = 1L; // compara os dados serializados no arquivo
 
-// transforma as informações em arquivo salvavel
-public class Vendedor implements Serializable {
-
-    private static final long serialVersionUID = 1L; // evita crashar o programa inteiro em caso de arquivo corruptivel 
 
     private String nome;
     private String login;
-    private String senha;
 
     private List<Produto> produtos;
     private List<String> historico;
@@ -22,10 +19,10 @@ public class Vendedor implements Serializable {
     public Vendedor(String nome, String login, String senha) {
         this.nome = nome;
         this.login = login;
-        this.senha = senha;
         this.produtos = new ArrayList<>();
         this.historico = new ArrayList<>();
     }
+
 
     public String getNome() {
         return nome;
@@ -54,7 +51,13 @@ public class Vendedor implements Serializable {
         if (quantidade <= 0) return;
 
         produto.removerQuantidade(quantidade);
-        historico.add("Removido " + quantidade + " de " + produto.getNome());
+
+        if (produto.getQuantidade() <= 0) {
+            produtos.remove(produto);
+            historico.add("Produto removido" + produto.getNome());
+        } else {
+            historico.add("Removido " + quantidade + " de " + produto.getNome());
+        }
         VendedorRepository.salvar();
     }
 }
