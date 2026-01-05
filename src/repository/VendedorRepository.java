@@ -44,7 +44,7 @@ public class VendedorRepository {
         }
 
         // caso não ache, procura outro
-        vendedorAtual = new Vendedor(login, login, "123");
+        vendedorAtual = new Vendedor(login, login);
         vendedores.add(vendedorAtual);
         salvar();
 
